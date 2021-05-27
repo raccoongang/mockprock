@@ -25,7 +25,7 @@ init_app(app)
 app.register_blueprint(fake_application)
 
 proctoring_config = {
-    'download_url': 'http://host.docker.internal:11136/download',
+    'download_url': 'https://mockprock-master-proctoring.raccoongang.com/download',
     'name': 'MockProck',
     'rules': {
         'allow_cheating': 'Allow the student to cheat',
@@ -257,7 +257,7 @@ if __name__ == '__main__':
         epilog='Retrieve the mockprock client id and secret from the LMS Django admin, and start the server with those arguments')
     parser.add_argument("client_id", type=str, help="oauth client id", nargs="?")
     parser.add_argument("client_secret", type=str, help="oauth client secret", nargs="?")
-    parser.add_argument('-l', dest='lms_host', type=str, help='LMS host', default='http://host.docker.internal:18000')
+    parser.add_argument('-l', dest='lms_host', type=str, help='LMS host', default='https://lms-master-proctoring.raccoongang.com')
     args = parser.parse_args()
 
     if not (args.client_id and args.client_secret):
