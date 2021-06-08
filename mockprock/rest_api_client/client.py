@@ -55,6 +55,7 @@ def get_oauth_access_token(url, client_id, client_secret, token_type='jwt', gran
         headers={
             'User-Agent': USER_AGENT,
         },
+        verify=False
     )
 
     data = response.json()
@@ -106,4 +107,4 @@ class OAuthAPIClient(requests.Session):
         Overrides Session.request to ensure that the session is authenticated
         """
         self._check_auth()
-        return super(OAuthAPIClient, self).request(method, url, **kwargs)
+        return super(OAuthAPIClient, self).request(method, url, verify=False, **kwargs)
